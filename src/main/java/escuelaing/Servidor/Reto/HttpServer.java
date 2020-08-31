@@ -179,7 +179,6 @@ public class HttpServer {
             String line = null; 
             while ((line = reader.readLine()) != null) {
                 out.println(line);
-                System.out.println(line);
             }
         } catch (IOException ex) {
             Logger.getLogger(HttpServer.class.getName()).log(Level.SEVERE, null, ex);

@@ -37,7 +37,6 @@ import java.io.*;
        System.out.println("Mensaje: "+input);
        outputLine = "Respuesta: " + input;
     out.println(outputLine);
-    if (outputLine.equals("Respuesta: 0")) break;
    }
    out.close(); in .close();
    clientSocket.close();
