@@ -9,6 +9,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class HttpServer {
 
     private int port = 36000;
     private boolean running = false;
+    private DataBase DB;
 
     public HttpServer() {
     }
@@ -36,6 +38,7 @@ public class HttpServer {
     }
 
     public void start() {
+        StartDataBase();
         try {
             new Integer(System.getenv("PORT"));
             ServerSocket serverSocket = null;
@@ -116,7 +119,11 @@ public class HttpServer {
             } catch (IOException ex) {
                 Logger.getLogger(HttpServer.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else {
+        }
+        else if(theuri.getPath().startsWith("")){
+            loadService(out);
+        }
+        else {
             getStaticResource(theuri.getPath(), out);
         }
         out.close();
@@ -186,4 +193,72 @@ public class HttpServer {
             Logger.getLogger(HttpServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    private void loadService(PrintWriter out) {
+        String outputLine = "HTTP/1.1 200 OK\r\n"
+                + "Content-Type: text/html\r\n"
+                + "\r\n"
+                + "<!DOCTYPE html>"
+                + "<html>"
+                + "<head>"
+                + "<meta charset=\"UTF-8\">\n"
+                + "<title>Title of the document</title>\n"
+                + "</head>";
+        StringBuilder st = new StringBuilder();
+        ArrayList<Table> tables = DB.getData("Temperatures");
+        outputLine = createHtmlTable(outputLine);
+        outputLine = outputLine
+                + "<body>"
+                + "<h1>Registro de temperatura</h1>"
+                +"<p>La ley pide que se lleve un registro de las temperaturas de los refrigeradores que tengan lacteos,canes.etc."
+                + "por esta razon le ofrecemos una herramienta para que lleve este registro online.</p>";
+        
+        
+        outputLine = FillHtmlTable(tables,outputLine);
+        outputLine = outputLine
+                + "</body>"
+                + "</html>";
+        out.println(outputLine);
+    }
+
+    private void StartDataBase() {
+        DB = new DataBase();
+    }
+
+    private String createHtmlTable(String outputLine) {
+        outputLine = outputLine 
+                + "<style>"
+                + "table, th, td {"
+                + "border: 1px solid black;"
+                + "border-collapse: collapse;"
+                + "}"
+                + "th, td {padding: 15px;"
+                + "text-align: left;"
+                + "}"
+                + "#t01 {"
+                + "width: 100%;"
+                + "background-color: #f1f1c1;"
+                +"}"
+                +"</style>";
+        return outputLine;
+    }
+
+    private String FillHtmlTable(ArrayList<Table> tables, String outputLine) {
+        String col ="<table style=\"width:100%\">"
+                + "<caption>Temperaturas</caption>"
+                +"<tr>"
+                    + "<th>Date</th>"
+                    + "<th>Temperature</th>"
+                    + "</tr>";
+        
+        for (Table tab: tables){
+            col = col.concat("<tr>"
+                    + "<th>"+tab.date+"</th>"
+                    + "<th>"+tab.temperature+"</th>"
+                    + "</tr>");
+        }
+        outputLine = outputLine.concat(col);
+        return outputLine;
+    }
+    
 }

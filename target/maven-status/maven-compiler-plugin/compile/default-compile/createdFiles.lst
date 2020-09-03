@@ -1,11 +1,13 @@
-escuelaing/Servidor/Calentamiento/Client.class
 escuelaing/Servidor/LittleSpark/HttpServer.class
 escuelaing/Servidor/HttpServer.class
-escuelaing/Servidor/Calentamiento/URLComponents.class
 escuelaing/Servidor/Reto/HttpServer.class
+escuelaing/Servidor/Table.class
 escuelaing/Servidor/App.class
 escuelaing/Servidor/Reto/Server.class
 escuelaing/Servidor/Calentamiento/Server.class
-escuelaing/Servidor/Calentamiento/CatchURL.class
 escuelaing/Servidor/Reto/Request.class
+escuelaing/Servidor/Calentamiento/Client.class
+escuelaing/Servidor/Calentamiento/URLComponents.class
+escuelaing/Servidor/Calentamiento/CatchURL.class
+escuelaing/Servidor/DataBase.class
 escuelaing/Servidor/LittleSpark/Request.class
