@@ -1,7 +1,6 @@
 package escuelaing.Servidor;
 
 
-import escuelaing.Servidor.LittleSpark.Request;
 import java.awt.image.BufferedImage;
 import java.net.*;
 import java.io.*;
