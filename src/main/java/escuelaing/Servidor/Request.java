@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * this class represent the HTTP request line
  * @author dnielben
  */
-public class Request {
+public final class Request {
     
     private String method;
     private String requestURI;
