@@ -38,7 +38,7 @@ public final class Request {
             setTheuri(new URI(requestURI));
             query = parseQuery(theuri.getQuery());
         } catch (URISyntaxException ex) {
-            Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("OK");
         }
         
     }
