@@ -19,7 +19,18 @@ cd Spark-AREP
 mvn package
 ```
 ```
-java -cp target/-se-me-olvido-como
+java -cp target/Servidor-1.0-SNAPSHOT.jar escuelaing.Servidor.App
+```
+
+Probar 
+```
+http://localhost:4567/
+```
+```
+http://localhost:4567/index.html
+```
+```
+http://localhost:4567/GoodJoob.png
 ```
 
 ## Construido con
