@@ -40,7 +40,7 @@ public class HttpServer {
     public void start() {
         StartDataBase();
         try {
-            port = new Integer(System.getenv("PORT"));
+            //port = new Integer(System.getenv("PORT"));
             ServerSocket serverSocket = null;
 
             try {
