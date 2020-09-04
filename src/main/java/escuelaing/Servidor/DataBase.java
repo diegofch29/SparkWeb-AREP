@@ -27,23 +27,15 @@ import javax.swing.text.Document;
  */
 public class DataBase {
     
-    private MongoClientURI uri = new MongoClientURI(
-    "mongodb+srv://mongodb:MongoDB29@cluster0.cgjvc.mongodb.net/Temperatures?retryWrites=true&w=majority");
-    private MongoClient mongoCl ;
-    private DB database;
-    private ArrayList<Table> tables = new ArrayList<Table>();;
+    private final MongoClientURI uri;
+    private final MongoClient mongoCl ;
+    private final DB database;
+    private final ArrayList<Table> tables = new ArrayList<>();;
     
-    public  void DataBase() {
+    public DataBase() {
+        this.uri = new MongoClientURI("mongodb+srv://mongodb:MongoDB29@cluster0.cgjvc.mongodb.net/Temperatures?retryWrites=true&w=majority");
         mongoCl = new MongoClient(uri);
         database = mongoCl.getDB("Cluster0");
-        dropColletion("Temperatures");
-        createTable("Temperatures");
-        insert("Temperatures", "08/08/2020", "2.7");
-        insert("Temperatures", "09/08/2020", "2.8");
-        insert("Temperatures", "10/08/2020", "2.3");
-        insert("Temperatures", "11/08/2020", "3.0");
-        insert("Temperatures", "12/08/2020", "3.1");
-        insert("Temperatures", "13/08/2020", "3.2");
         if (mongoCl!=null){
             System.out.println("OK");
         }
@@ -54,7 +46,7 @@ public class DataBase {
     
     public void createTable(String name){
         database.createCollection("name", null);
-        System.out.println("collectio created");
+        System.out.println("collection created");
 	database.getCollectionNames().forEach(System.out::println);
     }
     

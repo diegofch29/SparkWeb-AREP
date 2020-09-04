@@ -120,11 +120,11 @@ public class HttpServer {
                 Logger.getLogger(HttpServer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        else if(theuri.getPath().startsWith("")){
-            loadService(out);
+        else if(theuri.getPath().isEmpty()){
+            getStaticResource(theuri.getPath(), out);
         }
         else {
-            getStaticResource(theuri.getPath(), out);
+            loadService(out);
         }
         out.close();
     }

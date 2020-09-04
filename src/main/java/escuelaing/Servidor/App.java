@@ -7,7 +7,7 @@ package escuelaing.Servidor;
 public class App 
 {
     public static void main(String[] args){
-        escuelaing.Servidor.Reto.HttpServer Server = new escuelaing.Servidor.Reto.HttpServer();
+        HttpServer Server = new HttpServer();
         Server.start();
     }
 }
