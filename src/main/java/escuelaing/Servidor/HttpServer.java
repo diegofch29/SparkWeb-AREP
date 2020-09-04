@@ -1,7 +1,6 @@
 package escuelaing.Servidor;
 
-import escuelaing.Servidor.Reto.*;
-import escuelaing.Servidor.LittleSpark.*;
+
 import escuelaing.Servidor.LittleSpark.Request;
 import java.awt.image.BufferedImage;
 import java.net.*;
@@ -11,12 +10,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
 import sun.misc.BASE64Encoder;
 
 /**
