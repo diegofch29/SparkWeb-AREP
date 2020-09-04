@@ -40,7 +40,12 @@ public class HttpServer {
     public void start() {
         StartDataBase();
         try {
-            //port = new Integer(System.getenv("PORT"));
+            if (System.getenv("PORT") != null) {
+                port = Integer.parseInt(System.getenv("PORT"));
+            }
+            else{
+                port = 4567;
+            } //returns default port if heroku-port isn't set (i.e. on localhost)
             ServerSocket serverSocket = null;
 
             try {
